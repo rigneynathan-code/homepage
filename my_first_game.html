@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>360 Breakout - Left Side POW</title>
+    <title>360 Breakout - Controls Update</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         body {
@@ -47,9 +47,38 @@
             z-index: 10;
             width: 100%;
             pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
         }
         
-        /* RIGHT SIDE CONTROLS */
+        /* CONTROLS LEGEND STYLING */
+        #controls-legend {
+            display: flex;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px solid #555;
+            font-family: sans-serif; /* Readable font for instructions */
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #ccc;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .key-hint {
+            color: #00e5ff; /* Cyan for keys */
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            margin-right: 5px;
+            letter-spacing: 1px;
+        }
+        .control-item {
+            display: flex;
+            align-items: center;
+        }
+
         #right-ui {
             position: absolute;
             right: 20px;
@@ -61,7 +90,6 @@
             z-index: 20;
         }
 
-        /* LEFT SIDE UI */
         #left-ui {
             position: absolute;
             left: 20px;
@@ -141,15 +169,7 @@
             font-size: 1.5em;
             color: #00e5ff;
         }
-        .instruction {
-            color: #ccc;
-            font-family: sans-serif;
-            font-size: 0.9em;
-            margin-top: 5px;
-            text-shadow: 1px 1px 0 #000;
-        }
         
-        /* VERTICAL TIMER */
         #timer-group {
             height: 35vh; 
             display: flex;
@@ -201,11 +221,9 @@
             margin-top: 10px;
         }
 
-        /* COMIC POW EFFECT - UPDATED POSITION */
         #pow-effect {
             position: absolute;
             top: 50%;
-            /* Moved to Left side, centered over the timer roughly */
             left: 160px; 
             transform: translate(-50%, -50%) scale(0) rotate(-15deg);
             width: 250px;
@@ -233,7 +251,6 @@
             line-height: 1;
         }
         #pow-effect.active {
-            /* Keep rotation when scaling up */
             transform: translate(-50%, -50%) scale(1.2) rotate(-10deg);
             opacity: 1;
         }
@@ -266,7 +283,18 @@
 
     <div id="bottom-ui">
         <div id="push-status">MAGNET: READY</div>
-        <p class="instruction">UP: Quick Shot | DOWN: Precision Aim</p>
+        
+        <div id="controls-legend">
+            <div class="control-item">
+                <span class="key-hint">← / →</span> ROTATE
+            </div>
+            <div class="control-item">
+                <span class="key-hint">HOLD ↑</span> QUICK SHOT
+            </div>
+            <div class="control-item">
+                <span class="key-hint">HOLD ↓</span> SNIPER AIM
+            </div>
+        </div>
     </div>
 
     <div id="right-ui">
